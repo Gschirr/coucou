@@ -23,6 +23,7 @@ Alle Pfade ohne Präfix sind relativ zu `windows/`. Befehle laufen in `windows/`
 - Hook darf Claude Code nie blockieren (Upstream-Regel, bleibt unberührt).
 - Default-Shortcut `pushToTalk` = `Ctrl+Alt+V`; Action-IDs nie umbenennen.
 - Sprache Deutsch (`language=de` für whisper).
+- Neue UI-Texte nur in `src/i18n/extra.json` mit allen Sprachen außer Englisch (zh-Hans, hi, es, ar, fr, bn, pt, ru, id); `src/i18n/strings.json` wird generiert und nie von Hand geändert. Wo der Plan „strings.json" und deutsche Übersetzungen nennt, gilt das hier (Ruling 12.10.).
 - Ohne `whisper-server`/`piper`/`pw-record` startet Coucou normal; nur die Sprachfunktion meldet, was fehlt.
 
 ## Review Focus
