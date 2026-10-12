@@ -51,7 +51,10 @@ sudo snapper -c root create -d "vor coucou voice"
 
 ```bash
 paru -Syu whisper-cpp piper-tts-bin
+paru -S ggml-vulkan   # GPU backend; without it whisper runs on the CPU (10 s instead of 0.2 s)
 ```
+
+✅ Erledigt 12.10.: Binary `piper-tts`, alle whisper-server-Flags vorhanden, Vulkan auf RX 7900 XT (encode 160 ms).
 
 - [ ] **Step 3: Binärnamen und Flags festhalten**
 
@@ -139,6 +142,7 @@ optdepends=(
   'gnome-keyring: store API keys (or any other Secret Service provider)'
   'kwallet: store API keys (or any other Secret Service provider)'
   'whisper-cpp: push-to-talk speech recognition (whisper-server)'
+  'ggml-vulkan: run whisper on the GPU'
   'piper-tts-bin: spoken answers'
   'pipewire: microphone capture and playback (pw-record, pw-play)'
   'kitty: send dictated instructions to Claude Code sessions'
@@ -1983,7 +1987,7 @@ Coucou aus dem Startmenü starten, Settings → Sprache → „Bereit". E2E-Punk
 
 - [ ] **Step 3: neuromancer** (über SSH oder vor Ort; Task 0 Steps 1–5 und 7 dort wiederholen, kitty.conf kommt per `yadm pull`)
 
-Statt `ggml-large-v3-turbo-q5_0.bin` das kleinere Modell laden:
+Pakete: `paru -Syu whisper-cpp piper-tts-bin ggml-vulkan` (Vulkan nur, wenn `vulkaninfo --summary` eine GPU zeigt; sonst ohne). Statt `ggml-large-v3-turbo-q5_0.bin` das kleinere Modell laden:
 
 ```bash
 curl -L -o ~/.local/share/coucou/models/ggml-small.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin
